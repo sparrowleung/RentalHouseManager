@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="settingViewModel"
+            type="com.example.samsung.rentalhousemanager.roomsetting.RoomSettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/customer_msg" />
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/setting_child_layout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_name"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:hint="@string/customer_name"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/setting_child_layout1"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_sex"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_sex"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/setting_child_layout3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_place"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_place"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/setting_child_layout3"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_phone"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/phone_num"
+                            android:inputType="number"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/setting_child_layout5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_job"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_job"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/setting_child_layout5"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_number"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_liveNum"
+                            android:inputType="number"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/setting_child_layout7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_id"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:hint="@string/customer_Id"
+                            android:inputType="text"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                android:text="房间信息：" />
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/setting_layout3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_deposit"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_deposit"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/setting_layout3"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_tenancy"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_tenancy"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="年"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/setting_layout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_date"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_liveDay"
+                            android:inputType="numberSigned"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/setting_layout1"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_monthly"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_monthly"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/setting_layout9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_manage"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_manageBill"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="元/月"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toEndOf="@+id/setting_layout9"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_other"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_otherBill"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="元/月"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                android:text="费用信息：" />
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/setting_layout7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_electric"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_ele"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="元/度"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/setting_layout7"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_electricUse"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:hint="@string/customer_eleUse"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="度"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/setting_layout6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_water"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_water"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="元/吨"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/setting_layout6"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_waterUse"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:hint="@string/customer_waterUse"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="吨"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/setting_layout8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_air"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="@string/customer_air"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="元/方"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/setting_layout8"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/setting_airUse"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:hint="@string/customer_airUse"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{settingViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="方"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:id="@+id/setting_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/setting_upload"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="取消"
+                android:textSize="16sp"
+                app:onClickListener="@{settingViewModel.onClickCallBack}" />
+
+            <Button
+                android:id="@+id/setting_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="2dp"
+                android:layout_marginRight="20dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="提交"
+                android:textSize="16sp"
+                app:onClickListener="@{settingViewModel.onClickCallBack}" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

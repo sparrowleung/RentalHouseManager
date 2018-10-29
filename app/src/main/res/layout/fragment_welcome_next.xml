@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="welcomeViewModel"
+            type="com.example.samsung.rentalhousemanager.disclaimer.NewDisclaimerViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/welcome">
+
+        <LinearLayout
+            android:id="@+id/welcome_next_loginLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/welcome_next_icon"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/home" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@+id/welcome_next_icon"
+                    android:gravity="bottom"
+                    android:text="@string/app_name"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="25dp" />
+            </RelativeLayout>
+
+
+            <EditText
+                android:id="@+id/welcome_next_account"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:hint="@string/phone_num"
+                android:inputType="number"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="14dp"
+                app:loginMessage="@{welcomeViewModel.callback}"/>
+
+
+            <EditText
+                android:id="@+id/welcome_next_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="14dp"
+                app:loginMessage="@{welcomeViewModel.callback}"/>
+
+            <Button
+                android:id="@+id/welcome_next_login"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_click"
+                android:text="@string/login"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                app:AccountLoginClick="@{welcomeViewModel.clickCallBack}"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
+
+                <Button
+                    android:id="@+id/welcome_next_forgetPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/password_forget"
+                    android:textColor="@color/winset_hyper_link_text_color"
+                    android:textSize="12sp"
+                    app:AccountLoginClick="@{welcomeViewModel.clickCallBack}"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/welcome_next_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/register_new"
+                    android:textColor="@color/winset_hyper_link_text_color"
+                    android:textSize="12sp"
+                    app:AccountLoginClick="@{welcomeViewModel.clickCallBack}"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:focusedByDefault="false"
+        android:descendantFocusability="afterDescendants"
+        android:orientation="vertical"
+        >
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:focusedByDefault="false"
+            android:descendantFocusability="afterDescendants"
+            >
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBar_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:focusedByDefault="false"
+                android:descendantFocusability="afterDescendants"
+                app:elevation="0dp">
+
+                <com.example.samsung.rentalhousemanager.toolclass.V26Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:background="#FFFF"
+                    android:contentInsetStart="0dp"
+                    android:elevation="0dp"
+                    app:theme="@style/AppTheme.toolbar"/>
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tapLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#FFFF"
+                    android:layoutDirection="ltr"
+                    app:tabGravity="fill"
+                    android:elevation="0dp"
+                    app:tabIndicatorColor="#51b0d3"
+                    app:tabPaddingEnd="5dp"
+                    app:tabPaddingStart="5dp"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#22221111"
+                    android:layout_gravity="bottom"
+                />
+            </android.support.design.widget.AppBarLayout>
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                />
+
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navi_view"
+            android:layout_width="298dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#FFFF"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ExpandableListView
+                    android:id="@+id/drawer_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="?attr/actionBarSize" />
+            </LinearLayout>
+
+        </android.support.design.widget.NavigationView>
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+</layout>

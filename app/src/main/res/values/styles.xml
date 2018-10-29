@@ -1,0 +1,58 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="android:colorControlActivated">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="MyEditText" parent="AlertDialog.AppCompat.Light">
+        <item name="android:colorControlNormal">@color/alert_dialog_view_list_color</item>
+        <item name="android:colorControlActivated">@color/intro_description</item>
+    </style>
+
+    <style name="AppTheme.toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:fontFamily">sec-roboto-condensed</item>
+        <item name="android:touchscreenBlocksFocus">false</item>
+        <item name="android:textColorPrimary">@color/diagnosis_icon_color</item>
+        <item name="android:actionMenuTextColor">@drawable/actionbar_menu_item</item>
+        <item name="android:actionButtonStyle">@style/AppTheme.ActionButton</item>
+        <item name="android:actionBarItemBackground">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="android:popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:subtitleTextAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="titleTextAppearance">@style/AppTheme.ActionBarTitle</item>
+    </style>
+
+    <style name="AppTheme.ActionButton" parent="Widget.AppCompat.ActionBar">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@string/font_sans_serif_condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AppTheme.ActionBarTitle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/dialog_item_title</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sec-roboto-condensed</item>
+        <item name="android:alpha">0.9</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFF"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/calendar"
+        android:background="@drawable/calendarr"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:text="当前月份："
+        android:id="@+id/month"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:gravity="bottom"
+        android:layout_toEndOf="@+id/calendar"/>
+
+    <TextView
+        android:id="@+id/month_Now"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:paddingBottom="5dp"
+        android:gravity="bottom"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/month"
+        />
+
+    <FrameLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendar"
+        />
+
+    <Button
+        android:id="@+id/msg_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_click_wihout_alpha"
+        android:layout_alignParentBottom="true"
+        android:text="一键发送短信"
+        android:textColor="@color/winset_navigation_bar_white"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/msg_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/container"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/msg_progressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:indeterminateTint="@color/accent"
+        android:visibility="gone"/>
+
+</RelativeLayout>

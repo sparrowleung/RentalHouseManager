@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="@string/date_pick"
+        android:textColor="@color/intro_description"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <com.example.samsung.rentalhousemanager.toolclass.DatePickView
+        android:id="@+id/view_timePick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+    </com.example.samsung.rentalhousemanager.toolclass.DatePickView>
+
+</LinearLayout>

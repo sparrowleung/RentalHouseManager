@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="MoneyViewModel"
+            type="com.example.samsung.rentalhousemanager.roomdata.RoomDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:text="@string/bill_setting"
+            android:textColor="@color/intro_description" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/customer_eleUse"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:gravity="center_vertical"
+                            android:text=":"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/setting_electricUse"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:gravity="center"
+                            android:hint="@{MoneyViewModel.mElectricUse}"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{MoneyViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="度"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/customer_waterUse"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:gravity="center_vertical"
+                            android:text=":"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/setting_waterUse"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:hint="@{MoneyViewModel.mWaterUse}"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{MoneyViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="吨"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/customer_airUse"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:gravity="center_vertical"
+                            android:text=":"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/setting_airUse"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:hint="@{MoneyViewModel.mAirUse}"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:theme="@style/MyEditText"
+                            app:txtChangedListener="@{MoneyViewModel.onTextChangedCallback}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:text="方"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</layout>
