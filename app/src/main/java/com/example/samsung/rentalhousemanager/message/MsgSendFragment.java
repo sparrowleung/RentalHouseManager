@@ -25,6 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * Created by yuyang.liang on 2018/7/9.
  */
@@ -130,8 +137,20 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
     public void requestDataFromServer() {
         mMsgSendPresenter = MsgSendPresenter.create(mContext, this);
         mMsgSendPresenter.onCreate(null);
-        mDataList = mMsgSendPresenter.getRenterAllMsg();
-        dateView.setText(mMsgSendPresenter.getDateForNow());
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                dateView.setText(mMsgSendPresenter.getDateForNow());
+                e.onNext(true);
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        mDataList = mMsgSendPresenter.getRenterAllMsg();
+                    }
+                });
 
         if (mRecyclerView != null) {
             mRecyclerView.setVisibility(View.GONE);

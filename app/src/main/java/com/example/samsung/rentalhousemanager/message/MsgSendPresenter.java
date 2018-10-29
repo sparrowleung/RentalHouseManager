@@ -57,16 +57,16 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
 
     @Override
     public void sendMsgForRental(List<String> sumDeposit) {
-        for (int i = 0; i < mRentalAllMsg.get(1).size(); i++) {
-            PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, new Intent(), 0);
-            SmsManager smsManager = SmsManager.getDefault();
-            String str = String.format("尊敬的%s房客，您在本月使用了%s度电，%s顿水，房租合计%s元。收到通知后，可以通过微信转账/现金支付。祝你有美好的一天。",
-                    mRentalAllMsg.get(0).get(i).get("roomNum"),
-                    mRentalAllMsg.get(1).get(i).get("electricUse"),
-                    mRentalAllMsg.get(1).get(i).get("waterUse"),
-                    sumDeposit.get(i));
-            smsManager.sendTextMessage(mRentalAllMsg.get(0).get(i).get("phoneNum"), null, str, pendingIntent, null);
-        }
+       for (int i = 0; i < 1; i++) {
+           PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, new Intent(), 0);
+           SmsManager smsManager = SmsManager.getDefault();
+           String str = String.format("尊敬的%s房客: \n 您在本月使用了%s度电，%s顿水，房租合计%s元。收到通知后，可以通过微信转账/现金支付。 \n祝你有美好的一天。",
+                   mRentalAllMsg.get(0).get(i).get("roomNum"),
+                   mRentalAllMsg.get(1).get(i).get("electricUse"),
+                   mRentalAllMsg.get(1).get(i).get("waterUse"),
+                   sumDeposit.get(i));
+           smsManager.sendTextMessage("18520971032", null, str, pendingIntent, null);
+       }
     }
 
     @Override
@@ -87,7 +87,6 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         greatMap = new HashMap<>();
         lessMap.put("uploadAt", TimeUtil.dateFinish);
         greatMap.put("uploadAt", TimeUtil.dateStart);
-        Log.e(TAG, "start -> " + TimeUtil.dateStart + " Finish -> " + TimeUtil.dateFinish);
         return date;
     }
 
