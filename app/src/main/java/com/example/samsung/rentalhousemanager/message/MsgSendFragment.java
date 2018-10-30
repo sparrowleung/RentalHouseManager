@@ -1,14 +1,20 @@
 package com.example.samsung.rentalhousemanager.message;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -20,17 +26,11 @@ import com.example.samsung.rentalhousemanager.baseclass.BaseFragment;
 import com.example.samsung.rentalhousemanager.roomdata.IResponse;
 import com.example.samsung.rentalhousemanager.toolclass.RHToast;
 
+import java.security.Permission;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by yuyang.liang on 2018/7/9.
@@ -68,22 +68,39 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
         mSendMsgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                msgSendConfirmDialog();
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                    if (PermissionChecker.checkSelfPermission(mContext, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS}, 0);
+                    } else {
+                        msgSendConfirmDialog();
+                    }
+                } else {
+                    msgSendConfirmDialog();
+                }
             }
         });
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantedResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantedResults);
+
+        if (requestCode == 0) {
+            msgSendConfirmDialog();
+        }
+    }
+
+    @Override
     public void onFail(String type) {
         mProgressBar.setVisibility(View.GONE);
-        RHToast.makeText(mContext, "获取住户信息错误，请重试", Toast.LENGTH_SHORT).show();
+        RHToast.makeText(mContext, getString(R.string.fail_msg), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onSuccess(String type) {
         switch (type) {
             case "MsgSend" :
-                RHToast.makeText(mContext, "获取住户信息成功", Toast.LENGTH_SHORT).show();
+                RHToast.makeText(mContext, getString(R.string.success_msg), Toast.LENGTH_SHORT).show();
                 mProgressBar.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
                 createListHeater();
@@ -108,6 +125,9 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
                 mProgressBar.setVisibility(View.VISIBLE);
             }
         } else {
+            if (mMsgSendPresenter != null) {
+                mMsgSendPresenter.onStop();
+            }
             if (mProgressBar != null) {
                 mProgressBar.setVisibility(View.GONE);
             }
@@ -116,19 +136,26 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
 
     public void msgSendConfirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("确认框");
-        builder.setMessage("是否确认上述信息无误？");
-        builder.setNegativeButton("再检查一下", new DialogInterface.OnClickListener() {
+        builder.setTitle(getString(R.string.confirm_dialog));
+        builder.setMessage(getString(R.string.confirm_dialog_txt));
+        builder.setNegativeButton(getString(R.string.confirm_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        builder.setPositiveButton("确认无误", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.confirm_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mMsgSendPresenter.sendMsgForRental(sumDeposit);
-                RHToast.makeText(mContext, "Message Send", Toast.LENGTH_SHORT).show();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (PermissionChecker.checkSelfPermission(mContext, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS}, 0);
+                    } else {
+                        mMsgSendPresenter.sendMsgForRental(sumDeposit);
+                    }
+                } else {
+                    mMsgSendPresenter.sendMsgForRental(sumDeposit);
+                }
             }
         });
         builder.show();
@@ -137,20 +164,8 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
     public void requestDataFromServer() {
         mMsgSendPresenter = MsgSendPresenter.create(mContext, this);
         mMsgSendPresenter.onCreate(null);
-        Observable.create(new ObservableOnSubscribe<Boolean>() {
-            @Override
-            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
-                dateView.setText(mMsgSendPresenter.getDateForNow());
-                e.onNext(true);
-            }
-        }).subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
-                .subscribe(new Consumer<Boolean>() {
-                    @Override
-                    public void accept(Boolean aBoolean) throws Exception {
-                        mDataList = mMsgSendPresenter.getRenterAllMsg();
-                    }
-                });
+        dateView.setText(mMsgSendPresenter.getDateForNow());
+        mDataList = mMsgSendPresenter.getRenterAllMsg();
 
         if (mRecyclerView != null) {
             mRecyclerView.setVisibility(View.GONE);
@@ -161,13 +176,13 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
         FrameLayout frameLayout = mRootView.findViewById(R.id.container);
         View view = LayoutInflater.from(frameLayout.getContext()).inflate(R.layout.listitem_msg_send, null);
         TextView textView = view.findViewById(R.id.list_item_roomNum);
-        textView.setText("房号");
+        textView.setText(getString(R.string.room_num));
         TextView textView1 = view.findViewById(R.id.list_item_renterName);
         textView1.setText(getString(R.string.customer_name));
         TextView textView2 = view.findViewById(R.id.list_item_renterPhone);
-        textView2.setText("联系电话");
+        textView2.setText(getString(R.string.phone_num));
         TextView textView3 = view.findViewById(R.id.list_item_sumMoney);
-        textView3.setText("总租金");
+        textView3.setText(getString(R.string.bill_sum));
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         frameLayout.addView(view, lp);
     }

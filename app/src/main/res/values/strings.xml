@@ -40,8 +40,15 @@
     <string name="date_pick">请选择需要查询的月份</string>
     <string name="bill_setting">本月费用设置</string>
     <string name="bill_sum">总房租</string>
+    <string name="room_num">房间号</string>
     <string name="go_setting_ornot">是否前往设置？</string>
     <string name="go_forward">前往</string>
     <string name="msg_without_setting">当前房间尚未设置该项信息</string>
     <string name="fail_msg">获取网络信息错误，请重试</string>
+    <string name="success_msg">获取用户信息成功</string>
+    <string name="confirm_dialog">确认框</string>
+    <string name="confirm_dialog_txt">是否确认上述信息无误？</string>
+    <string name="confirm_cancel">再检查一下</string>
+    <string name="confirm_ok">确认无误</string>
+    <string name="msg_sending">消息发送中...</string>
 </resources>

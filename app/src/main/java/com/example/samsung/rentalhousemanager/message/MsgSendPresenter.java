@@ -1,23 +1,35 @@
 package com.example.samsung.rentalhousemanager.message;
 
+import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.samsung.rentalhousemanager.R;
 import com.example.samsung.rentalhousemanager.roomdata.IResponse;
+import com.example.samsung.rentalhousemanager.toolclass.RHToast;
 import com.example.samsung.rentalhousemanager.toolclass.TimeUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.bmob.v3.datatype.BmobDate;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by yuyang.liang on 2018/10/11.
@@ -38,17 +50,25 @@ abstract class MsgSendPresenter {
     public abstract void onCreate(Bundle saveInstanceState);
 
     public abstract void onDestroy();
+
+    public abstract void onStop();
 }
 
 class MsgSendPresenterImpl extends MsgSendPresenter {
     private static final String TAG = MsgSendPresenterImpl.class.getSimpleName();
 
     private Context mContext;
-    private IResponse mResponse;
     private Map<String, Object> lessMap;
     private Map<String, Object> greatMap;
-    private MsgSendData mMsgSendData;
+    private int index;
+    private ArrayList<Integer> failList = new ArrayList<>();
     private List<List<Map<String, String>>> mRentalAllMsg = new ArrayList<>();
+
+    private IResponse mResponse;
+    private MsgSendData mMsgSendData;
+    private MsgSendStateBroadcastReceiver sendStateReceiver;
+    private MsgReceiveStateBroadcastReceiver receiveStateReceiver;
+    private Observable<Boolean> msgSendOb;
 
     MsgSendPresenterImpl(Context context, IResponse response) {
         mContext = context;
@@ -56,17 +76,51 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
     }
 
     @Override
-    public void sendMsgForRental(List<String> sumDeposit) {
-       for (int i = 0; i < 1; i++) {
-           PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, new Intent(), 0);
-           SmsManager smsManager = SmsManager.getDefault();
-           String str = String.format("尊敬的%s房客: \n 您在本月使用了%s度电，%s顿水，房租合计%s元。收到通知后，可以通过微信转账/现金支付。 \n祝你有美好的一天。",
-                   mRentalAllMsg.get(0).get(i).get("roomNum"),
-                   mRentalAllMsg.get(1).get(i).get("electricUse"),
-                   mRentalAllMsg.get(1).get(i).get("waterUse"),
-                   sumDeposit.get(i));
-           smsManager.sendTextMessage("18520971032", null, str, pendingIntent, null);
-       }
+    public void sendMsgForRental(final List<String> sumDeposit) {
+        final String SMS_SEND_ACTION = "SMS_SEND";
+        final String SMS_DELIVERED_ACTION = "SMS_DELIVERED";
+
+        sendStateReceiver = new MsgSendStateBroadcastReceiver();
+        mContext.registerReceiver(sendStateReceiver, new IntentFilter(SMS_SEND_ACTION));
+        receiveStateReceiver = new MsgReceiveStateBroadcastReceiver();
+        mContext.registerReceiver(receiveStateReceiver, new IntentFilter(SMS_DELIVERED_ACTION));
+
+        index = 0;
+        RHToast.makeText(mContext, mContext.getString(R.string.msg_sending), Toast.LENGTH_SHORT).show();
+
+        msgSendOb = Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                for (int i = 0; i < 2; i++) {
+                    PendingIntent sentIntent = PendingIntent.getBroadcast(mContext, i, new Intent(SMS_SEND_ACTION), 0);
+                    PendingIntent receiveIntent = PendingIntent.getBroadcast(mContext, i + 1, new Intent(SMS_DELIVERED_ACTION), 0);
+
+                    SmsManager smsManager = SmsManager.getDefault();
+                    String str = String.format("尊敬的%s房客:\n上个月您的用电量为%s度、用水量为%s吨，共计房租%s元。收到通知后，可通过微信转账/现金支付。\n祝您生活愉快。",
+                            mRentalAllMsg.get(0).get(0).get("roomNum"),
+                            mRentalAllMsg.get(1).get(0).get("electricUse"),
+                            mRentalAllMsg.get(1).get(0).get("waterUse"),
+                            sumDeposit.get(0));
+
+                    ArrayList<String> msgMulti = smsManager.divideMessage(str);
+                    ArrayList<PendingIntent> sentIntents = new ArrayList<>();
+                    ArrayList<PendingIntent> receiveIntents = new ArrayList<>();
+
+                    for (int j = 0; j < msgMulti.size(); j++) {
+                        sentIntents.add(sentIntent);
+                        receiveIntents.add(receiveIntent);
+                    }
+                    smsManager.sendMultipartTextMessage("18520971032", null, msgMulti, sentIntents, receiveIntents);
+                }
+                e.onNext(true);
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+
+
+        Log.e(TAG, "Send Finish");
+
+
     }
 
     @Override
@@ -95,6 +149,16 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
     }
 
     @Override
+    public void onStop() {
+        if (sendStateReceiver != null) {
+            mContext.unregisterReceiver(sendStateReceiver);
+        }
+        if (receiveStateReceiver != null) {
+            mContext.unregisterReceiver(receiveStateReceiver);
+        }
+    }
+
+    @Override
     public void onDestroy() {
         if (!mRentalAllMsg.isEmpty()) {
             mRentalAllMsg.clear();
@@ -102,6 +166,49 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         }
         if (mMsgSendData != null) {
             mMsgSendData = null;
+        }
+    }
+
+    class MsgReceiveStateBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (getResultCode()) {
+                case Activity.RESULT_OK:
+                    index++;
+                    Log.e(TAG, "Receive Success" + index);
+                    break;
+                default:
+                    index++;
+                    failList.add(index);
+                    Log.e(TAG, "Receive Fail" + index);
+                    break;
+            }
+        }
+    }
+
+    class MsgSendStateBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (getResultCode()) {
+                case Activity.RESULT_OK:
+                    Log.e(TAG, "Send Success");
+                    break;
+                case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                    Log.e(TAG, "RESULT_ERROR_GENERIC_FAILURE");
+                    break;
+                case SmsManager.RESULT_ERROR_RADIO_OFF:
+                    Log.e(TAG, "RESULT_ERROR_RADIO_OFF");
+                    break;
+                case SmsManager.RESULT_ERROR_NULL_PDU:
+                    Log.e(TAG, "RESULT_ERROR_NULL_PDU");
+                    break;
+                case SmsManager.RESULT_ERROR_NO_SERVICE:
+                    Log.e(TAG, "RESULT_ERROR_NO_SERVICE");
+                    break;
+                default:
+                    Log.e(TAG, "Send Fail");
+                    break;
+            }
         }
     }
 }
