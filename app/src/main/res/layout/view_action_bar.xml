@@ -13,8 +13,8 @@
 
     <ImageView
         android:id="@+id/drawerIcon"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:focusable="true"
         android:clickable="true"
         android:layout_marginLeft="20dp"
@@ -29,6 +29,7 @@
         android:layout_height="35dp"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/drawerIcon"
+        android:textStyle="bold"
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="1"

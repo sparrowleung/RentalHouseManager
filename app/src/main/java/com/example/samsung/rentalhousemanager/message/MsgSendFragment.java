@@ -53,10 +53,10 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         mRootView = inflater.inflate(R.layout.fragment_msg_send, container, false);
 
+        dateView = mRootView.findViewById(R.id.month_Now);
         mSendMsgButton = mRootView.findViewById(R.id.msg_send);
         mRecyclerView = mRootView.findViewById(R.id.msg_listView);
         mProgressBar = mRootView.findViewById(R.id.msg_progressBar);
-        dateView = mRootView.findViewById(R.id.month_Now);
 
         return mRootView;
     }
@@ -99,12 +99,12 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
     @Override
     public void onSuccess(String type) {
         switch (type) {
-            case "MsgSend" :
+            case "MsgSend":
                 RHToast.makeText(mContext, getString(R.string.success_msg), Toast.LENGTH_SHORT).show();
                 mProgressBar.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
                 createListHeater();
-                RentalAllMsgListAdapter listAdapter= new RentalAllMsgListAdapter(mContext, mDataList);
+                RentalAllMsgListAdapter listAdapter = new RentalAllMsgListAdapter(mContext, mDataList);
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
                 mRecyclerView.setAdapter(listAdapter);
                 break;
@@ -251,7 +251,7 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
             manageMoney = mRoomList.get(i).get("manage");
             monthlyMoney = mRoomList.get(i).get("monthly");
 
-            sumMoney  = Float.parseFloat(waterUse) * Float.parseFloat(water) +
+            sumMoney = Float.parseFloat(waterUse) * Float.parseFloat(water) +
                     Float.parseFloat(electricUse) * Float.parseFloat(electric) +
                     Float.parseFloat(airUse) * Float.parseFloat(air) +
                     Float.parseFloat(monthlyMoney) + Float.parseFloat(manageMoney) + Float.parseFloat(otherMoney);

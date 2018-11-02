@@ -24,6 +24,7 @@ import java.util.Map;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
@@ -57,10 +58,11 @@ abstract class MsgSendPresenter {
 class MsgSendPresenterImpl extends MsgSendPresenter {
     private static final String TAG = MsgSendPresenterImpl.class.getSimpleName();
 
+    private int index;
     private Context mContext;
     private Map<String, Object> lessMap;
     private Map<String, Object> greatMap;
-    private int index;
+
     private ArrayList<Integer> failList = new ArrayList<>();
     private List<List<Map<String, String>>> mRentalAllMsg = new ArrayList<>();
 
@@ -68,7 +70,7 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
     private MsgSendData mMsgSendData;
     private MsgSendStateBroadcastReceiver sendStateReceiver;
     private MsgReceiveStateBroadcastReceiver receiveStateReceiver;
-    private Observable<Boolean> msgSendOb;
+    private CompositeDisposable mSendDisposable = new CompositeDisposable();
 
     MsgSendPresenterImpl(Context context, IResponse response) {
         mContext = context;
@@ -80,15 +82,14 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         final String SMS_SEND_ACTION = "SMS_SEND";
         final String SMS_DELIVERED_ACTION = "SMS_DELIVERED";
 
+        index = 0;
         sendStateReceiver = new MsgSendStateBroadcastReceiver();
         mContext.registerReceiver(sendStateReceiver, new IntentFilter(SMS_SEND_ACTION));
+
         receiveStateReceiver = new MsgReceiveStateBroadcastReceiver();
         mContext.registerReceiver(receiveStateReceiver, new IntentFilter(SMS_DELIVERED_ACTION));
 
-        index = 0;
-        RHToast.makeText(mContext, mContext.getString(R.string.msg_sending), Toast.LENGTH_SHORT).show();
-
-        msgSendOb = Observable.create(new ObservableOnSubscribe<Boolean>() {
+        mSendDisposable.add(Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
                 for (int i = 0; i < 2; i++) {
@@ -115,12 +116,20 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
                 e.onNext(true);
             }
         }).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread());
-
-
-        Log.e(TAG, "Send Finish");
-
-
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        if (aBoolean) {
+                            RHToast.makeText(mContext, mContext.getString(R.string.msg_sending), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.e(TAG, "SendMsg Message -> " + throwable.getMessage());
+                    }
+                }));
     }
 
     @Override
@@ -129,7 +138,6 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         mRentalAllMsg.add(0, mMsgSendData.requestForRenterMsg());
         mRentalAllMsg.add(1, mMsgSendData.requestForRentalMsg());
         mRentalAllMsg.add(2, mMsgSendData.requestForRoomMsg());
-
         return mRentalAllMsg;
     }
 
@@ -156,6 +164,9 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         if (receiveStateReceiver != null) {
             mContext.unregisterReceiver(receiveStateReceiver);
         }
+        if (mSendDisposable != null) {
+            mSendDisposable.clear();
+        }
     }
 
     @Override
@@ -174,12 +185,9 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         public void onReceive(Context context, Intent intent) {
             switch (getResultCode()) {
                 case Activity.RESULT_OK:
-                    index++;
                     Log.e(TAG, "Receive Success" + index);
                     break;
                 default:
-                    index++;
-                    failList.add(index);
                     Log.e(TAG, "Receive Fail" + index);
                     break;
             }
@@ -191,23 +199,47 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         public void onReceive(Context context, Intent intent) {
             switch (getResultCode()) {
                 case Activity.RESULT_OK:
+                    index++;
                     Log.e(TAG, "Send Success");
                     break;
                 case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                    index++;
+                    failList.add(index);
                     Log.e(TAG, "RESULT_ERROR_GENERIC_FAILURE");
                     break;
                 case SmsManager.RESULT_ERROR_RADIO_OFF:
+                    index++;
+                    failList.add(index);
                     Log.e(TAG, "RESULT_ERROR_RADIO_OFF");
                     break;
                 case SmsManager.RESULT_ERROR_NULL_PDU:
+                    index++;
+                    failList.add(index);
                     Log.e(TAG, "RESULT_ERROR_NULL_PDU");
                     break;
                 case SmsManager.RESULT_ERROR_NO_SERVICE:
+                    index++;
+                    failList.add(index);
                     Log.e(TAG, "RESULT_ERROR_NO_SERVICE");
                     break;
                 default:
+                    index++;
+                    failList.add(index);
                     Log.e(TAG, "Send Fail");
                     break;
+            }
+
+            if (index / 2 == 2) {
+                mSendDisposable.clear();
+                if (failList.isEmpty()) {
+                    RHToast.makeText(mContext, mContext.getString(R.string.msg_finish), Toast.LENGTH_SHORT).show();
+                } else {
+                    StringBuilder strBuilder = new StringBuilder();
+                    for (int i = 0; i < failList.size(); i += 2) {
+                        strBuilder.append(mRentalAllMsg.get(0).get(i).get("roomNum")).append("/");
+                    }
+                    RHToast.makeText(mContext, strBuilder + "发送失败", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
