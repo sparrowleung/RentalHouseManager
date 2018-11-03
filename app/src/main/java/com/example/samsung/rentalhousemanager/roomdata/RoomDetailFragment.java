@@ -164,36 +164,33 @@ public class RoomDetailFragment extends BaseFragment implements IRoomView, IResp
     }
 
     @Override
-    public void onFail(String type) {
+    public void onFail(int type) {
         switch (type) {
-            case "MoneyInput":
+            case RoomExpandListAdapter.INPUT_ERROR:
                 RHToast.makeText(getContext(), "Msg Error & Try Again", Toast.LENGTH_SHORT).show();
-                break;
-            case "MoneySave":
-                RHToast.makeText(getContext(), "Msg Upload Fail & Try Again", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
     @Override
-    public void onSuccess(String type) {
+    public void onSuccess(int type) {
         switch (type) {
-            case "Room":
-            case "Renter":
+            case RoomData.UPDATE_ROOM_SUCCESS:
+            case RoomData.UPDATE_RENTER_SUCCESS:
                 RHToast.makeText(getContext(), "Update " + type + " Success", Toast.LENGTH_SHORT).show();
                 getExpandDataFromPresenter();
                 if (mDialogInfo != null && mDialogInfo.isShowing()) {
                     mDialogInfo.dismiss();
                 }
                 break;
-            case "Money":
+            case RoomData.UPDATE_RENTAL_SUCCESS:
                 RHToast.makeText(getContext(), "Update " + type + " Success", Toast.LENGTH_SHORT).show();
                 getExpandDataFromPresenter();
                 if (mDialogMoney != null && mDialogMoney.isShowing()) {
                     mDialogMoney.dismiss();
                 }
                 break;
-            case "MoneySet":
+            case RoomExpandListAdapter.INFO_SETUP_SUCCESS:
                 RHToast.makeText(getContext(), "Add MoneyMsg Success", Toast.LENGTH_SHORT).show();
                 getExpandDataFromPresenter();
                 break;

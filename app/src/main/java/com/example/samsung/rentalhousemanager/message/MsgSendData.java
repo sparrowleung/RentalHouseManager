@@ -24,10 +24,14 @@ import cn.bmob.v3.BmobUser;
 public class MsgSendData {
     private final static String TAG = MsgSendData.class.getSimpleName();
 
-    private IResponse mResponse;
     private int finishFlag = 0;
-    private Map<String, Object> equalMap = new HashMap<>();
+    private IResponse mResponse;
+
+    public static final int MSG_REQUEST_FAIL = 1;
+    public static final int MSG_REQUEST_SUCCESS = 2;
+
     private Map<String, Object> lessMap = new HashMap<>();
+    private Map<String, Object> equalMap = new HashMap<>();
     private Map<String, Object> greatMap = new HashMap<>();
 
     public MsgSendData(IResponse response, Map<String, Object> map, Map<String, Object> map1) {
@@ -65,7 +69,7 @@ public class MsgSendData {
                 if (normal) {
                     getProgress(1);
                 } else {
-                    mResponse.onFail("MsgSend");
+                    mResponse.onFail(MSG_REQUEST_FAIL);
                 }
             }
         });
@@ -100,7 +104,7 @@ public class MsgSendData {
                 if (normal) {
                     getProgress(2);
                 } else {
-                    mResponse.onFail("MsgSend");
+                    mResponse.onFail(MSG_REQUEST_FAIL);
                 }
             }
         });
@@ -138,7 +142,7 @@ public class MsgSendData {
                 if (normal) {
                     getProgress(3);
                 } else {
-                    mResponse.onFail("MsgSend");
+                    mResponse.onFail(MSG_REQUEST_FAIL);
                 }
             }
         });
@@ -148,7 +152,7 @@ public class MsgSendData {
     public void getProgress(int flag) {
         finishFlag += flag;
         if (finishFlag == 6) {
-            mResponse.onSuccess("MsgSend");
+            mResponse.onSuccess(MSG_REQUEST_SUCCESS);
         }
     }
 

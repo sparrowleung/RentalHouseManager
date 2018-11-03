@@ -91,15 +91,19 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
     }
 
     @Override
-    public void onFail(String type) {
-        mProgressBar.setVisibility(View.GONE);
-        RHToast.makeText(mContext, getString(R.string.fail_msg), Toast.LENGTH_SHORT).show();
+    public void onFail(int type) {
+        switch (type) {
+            case MsgSendData.MSG_REQUEST_FAIL:
+                mProgressBar.setVisibility(View.GONE);
+                RHToast.makeText(mContext, getString(R.string.fail_msg), Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 
     @Override
-    public void onSuccess(String type) {
+    public void onSuccess(int type) {
         switch (type) {
-            case "MsgSend":
+            case MsgSendData.MSG_REQUEST_SUCCESS :
                 RHToast.makeText(mContext, getString(R.string.success_msg), Toast.LENGTH_SHORT).show();
                 mProgressBar.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);

@@ -28,6 +28,10 @@ public class RoomData {
     private List<Map<String, String>> mRenterMessageChild;
     private List<Map<String, String>> mRentalMoneyChild;
 
+    public static final int UPDATE_ROOM_SUCCESS = 1;
+    public static final int UPDATE_RENTER_SUCCESS = 2;
+    public static final int UPDATE_RENTAL_SUCCESS = 3;
+
     private boolean mRoomRequest = false;
     private boolean mRenterRequest = false;
     private boolean mMoneyRequest = false;
@@ -272,7 +276,7 @@ public class RoomData {
             @Override
             public void onSuccess(String objectId) {
                 Log.e(TAG, "updateRoomMessage Success: ObjectId -> " + objectId);
-                mResponse.onSuccess("Room");
+                mResponse.onSuccess(UPDATE_ROOM_SUCCESS);
             }
 
             @Override
@@ -296,7 +300,7 @@ public class RoomData {
             @Override
             public void onSuccess(String objectId) {
                 Log.e(TAG, "updateRenterMessage Success: ObjectId -> " + objectId);
-                mResponse.onSuccess("Renter");
+                mResponse.onSuccess(UPDATE_RENTER_SUCCESS);
             }
 
             @Override
@@ -320,7 +324,7 @@ public class RoomData {
             @Override
             public void onSuccess(String objectId) {
                 Log.e(TAG, "updateMoneyMessage Success: ObjectId -> " + objectId);
-                mResponse.onSuccess("Money");
+                mResponse.onSuccess(UPDATE_RENTAL_SUCCESS);
             }
 
             @Override

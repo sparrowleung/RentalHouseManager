@@ -44,6 +44,8 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
     private static final int ITEM_TYPE_1 = 0;
     private static final int ITEM_TYPE_2 = 1;
     private static final int ITEM_TYPE_3 = 2;
+    public static final int INPUT_ERROR = 3;
+    public static final int INFO_SETUP_SUCCESS = 4;
 
     public RoomExpandListAdapter(Context context, IResponse response) {
         mContext = context;
@@ -268,7 +270,7 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
                                     if (air.isEmpty() || air.equals("")
                                             || elect.isEmpty() || elect.equals("")
                                             || water.isEmpty() || water.equals("")) {
-                                        mIResponse.onFail("MoneyInput");
+                                        mIResponse.onFail(INPUT_ERROR);
                                     } else {
                                         RentalMoneyObject object = new RentalMoneyObject();
                                         object.setRoomNum( mChildList.get(1).get(0).get("num"));
@@ -280,12 +282,12 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
                                         ServerRequest.onSaveRequest(object, new onSaveResultsListener() {
                                             @Override
                                             public void onSuccess(String objectId) {
-                                                mIResponse.onSuccess("MoneySet");
+                                                mIResponse.onSuccess(INFO_SETUP_SUCCESS);
                                             }
 
                                             @Override
                                             public void onFail(int errorCode, String errorMessage) {
-                                                mIResponse.onFail("MoneySave");
+                                                mIResponse.onFail(INPUT_ERROR);
                                                 Log.e(TAG, "Set MoneyMsg Fail - errorCode -> " + errorCode + " , errorMessage -> " + errorMessage);
                                             }
                                         });

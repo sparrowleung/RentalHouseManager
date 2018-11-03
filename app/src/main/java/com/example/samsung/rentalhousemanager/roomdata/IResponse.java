@@ -5,7 +5,7 @@ package com.example.samsung.rentalhousemanager.roomdata;
  */
 
 public interface IResponse {
-    void onFail(String type);
-    void onSuccess(String type);
+    void onFail(int type);
+    void onSuccess(int type);
     void onComplete(boolean normal);
 }
