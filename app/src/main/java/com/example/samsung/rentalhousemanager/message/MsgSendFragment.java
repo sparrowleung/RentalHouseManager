@@ -11,6 +11,7 @@ import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,7 +104,7 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
     @Override
     public void onSuccess(int type) {
         switch (type) {
-            case MsgSendData.MSG_REQUEST_SUCCESS :
+            case MsgSendData.MSG_REQUEST_SUCCESS:
                 RHToast.makeText(mContext, getString(R.string.success_msg), Toast.LENGTH_SHORT).show();
                 mProgressBar.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
@@ -124,10 +125,10 @@ public class MsgSendFragment extends BaseFragment implements IResponse {
     public void setUserVisibleHint(boolean isVisit) {
         super.setUserVisibleHint(isVisit);
         if (getUserVisibleHint()) {
-            requestDataFromServer();
             if (mProgressBar != null) {
                 mProgressBar.setVisibility(View.VISIBLE);
             }
+            requestDataFromServer();
         } else {
             if (mMsgSendPresenter != null) {
                 mMsgSendPresenter.onStop();

@@ -22,6 +22,9 @@ import java.util.Date;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
+import static com.example.samsung.rentalhousemanager.roomsetting.RoomSettingViewModel.ROOM_SETTING_CANCEL;
+import static com.example.samsung.rentalhousemanager.roomsetting.RoomSettingViewModel.ROOM_SETTING_UPLOAD;
+
 
 /**
  * Created by yuyang.liang on 2018/8/3.
@@ -55,15 +58,15 @@ public class RoomSettingFragment extends BaseFragment implements IResponse {
     public void onViewCreated(View view, Bundle saveInstanceState) {
         super.onViewCreated(view, saveInstanceState);
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        dialog.setTitle("是否取消提交");
-        dialog.setMessage("取消提交将不会保存已输入数据");
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setTitle(getString(R.string.room_setting_cancel));
+        dialog.setMessage(getString(R.string.room_setting_cancel_txt));
+        dialog.setNegativeButton(getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mDialog.dismiss();
             }
         });
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.dialog_confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Activity activity = getActivity();
@@ -80,14 +83,14 @@ public class RoomSettingFragment extends BaseFragment implements IResponse {
         super.onStart();
 
         mDisposable.add(mRoomViewModel.clickEventPublisher
-                .subscribe(new Consumer<String>() {
+                .subscribe(new Consumer<Integer>() {
                     @Override
-                    public void accept(String s) throws Exception {
-                        switch (s) {
-                            case "cancel":
+                    public void accept(Integer integer) throws Exception {
+                        switch (integer) {
+                            case ROOM_SETTING_CANCEL:
                                 mDialog.show();
                                 break;
-                            case "upload":
+                            case ROOM_SETTING_UPLOAD:
                                 mFragmentSettingBinding.settingProgress.setVisibility(View.VISIBLE);
                                 break;
                         }
@@ -106,12 +109,12 @@ public class RoomSettingFragment extends BaseFragment implements IResponse {
     }
 
     @Override
-    public void onFail(String type) {
+    public void onFail(int type) {
 
     }
 
     @Override
-    public void onSuccess(String type) {
+    public void onSuccess(int type) {
 
     }
 

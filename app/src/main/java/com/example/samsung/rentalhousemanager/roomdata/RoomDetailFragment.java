@@ -274,13 +274,13 @@ public class RoomDetailFragment extends BaseFragment implements IRoomView, IResp
     public void setMoneyDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
         dialog.setView(mMoneyDataBinding.getRoot());
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.dialog_confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mPresenter.notifyMoneyInfo(mRoomDetailViewModel);
@@ -293,13 +293,13 @@ public class RoomDetailFragment extends BaseFragment implements IRoomView, IResp
     public void setTimePickDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
         dialog.setView(mDatePickView);
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.dialog_confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mDateText.setText(mDateString);
@@ -321,13 +321,13 @@ public class RoomDetailFragment extends BaseFragment implements IRoomView, IResp
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
         dialog.setView(mInfoDataBinding.getRoot());
 
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.dialog_confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mPresenter.notifyRoomInfo(mRoomDetailViewModel);

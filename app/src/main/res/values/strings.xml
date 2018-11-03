@@ -52,4 +52,8 @@
     <string name="confirm_ok">确认无误</string>
     <string name="msg_sending">消息发送中...</string>
     <string name="msg_finish">消息发送完毕</string>
+    <string name="dialog_confirm">确定</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="room_setting_cancel">是否取消提交</string>
+    <string name="room_setting_cancel_txt">取消提交将不会保存已输入数据</string>
 </resources>

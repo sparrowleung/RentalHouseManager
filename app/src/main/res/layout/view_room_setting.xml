@@ -642,7 +642,7 @@
                 android:layout_toLeftOf="@+id/setting_upload"
                 android:background="?android:attr/selectableItemBackground"
                 android:gravity="center"
-                android:text="取消"
+                android:text="@string/dialog_cancel"
                 android:textSize="16sp"
                 app:onClickListener="@{settingViewModel.onClickCallBack}" />
 

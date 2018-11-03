@@ -252,13 +252,13 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
                             AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
                             final View DialogView = mInflater.inflate(R.layout.view_money_setting, null);
                             dialog.setView(DialogView);
-                            dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            dialog.setNegativeButton(mContext.getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
                                 }
                             });
-                            dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            dialog.setPositiveButton(mContext.getString(R.string.dialog_confirm), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     EditText airUse = (EditText) DialogView.findViewById(R.id.money_airUse);

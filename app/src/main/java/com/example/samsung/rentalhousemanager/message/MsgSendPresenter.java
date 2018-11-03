@@ -135,10 +135,7 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
     @Override
     public List<List<Map<String, String>>> getRenterAllMsg() {
         mMsgSendData = new MsgSendData(mResponse, lessMap, greatMap);
-        mRentalAllMsg.add(0, mMsgSendData.requestForRenterMsg());
-        mRentalAllMsg.add(1, mMsgSendData.requestForRentalMsg());
-        mRentalAllMsg.add(2, mMsgSendData.requestForRoomMsg());
-        return mRentalAllMsg;
+        return mMsgSendData.requestAllMsg();
     }
 
     @Override
@@ -153,8 +150,7 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
     }
 
     @Override
-    public void onCreate(Bundle saveInstanceState) {
-    }
+    public void onCreate(Bundle saveInstanceState) {}
 
     @Override
     public void onStop() {
@@ -185,10 +181,10 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         public void onReceive(Context context, Intent intent) {
             switch (getResultCode()) {
                 case Activity.RESULT_OK:
-                    Log.e(TAG, "Receive Success" + index);
+                    Log.e(TAG, "Receive Success");
                     break;
                 default:
-                    Log.e(TAG, "Receive Fail" + index);
+                    Log.e(TAG, "Receive Fail");
                     break;
             }
         }
@@ -201,26 +197,6 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
                 case Activity.RESULT_OK:
                     index++;
                     Log.e(TAG, "Send Success");
-                    break;
-                case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-                    index++;
-                    failList.add(index);
-                    Log.e(TAG, "RESULT_ERROR_GENERIC_FAILURE");
-                    break;
-                case SmsManager.RESULT_ERROR_RADIO_OFF:
-                    index++;
-                    failList.add(index);
-                    Log.e(TAG, "RESULT_ERROR_RADIO_OFF");
-                    break;
-                case SmsManager.RESULT_ERROR_NULL_PDU:
-                    index++;
-                    failList.add(index);
-                    Log.e(TAG, "RESULT_ERROR_NULL_PDU");
-                    break;
-                case SmsManager.RESULT_ERROR_NO_SERVICE:
-                    index++;
-                    failList.add(index);
-                    Log.e(TAG, "RESULT_ERROR_NO_SERVICE");
                     break;
                 default:
                     index++;

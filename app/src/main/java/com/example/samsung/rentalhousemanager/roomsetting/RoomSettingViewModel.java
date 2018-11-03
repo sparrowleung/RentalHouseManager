@@ -25,7 +25,10 @@ public class RoomSettingViewModel extends BaseObservable {
     private RoomDataModel dataModel;
     private RoomSettingData roomSettingData;
     private List<Map<String, Object>> mapList = new ArrayList<>();
-    public final PublishSubject<String> clickEventPublisher = PublishSubject.create();
+    public final PublishSubject<Integer> clickEventPublisher = PublishSubject.create();
+
+    public final static int ROOM_SETTING_CANCEL = 1;
+    public final static int ROOM_SETTING_UPLOAD = 2;
 
 
     public RoomSettingViewModel(IResponse iResponse, Date date, String roomNum) {
@@ -48,12 +51,12 @@ public class RoomSettingViewModel extends BaseObservable {
             if (!mapList.isEmpty()) {
                 mapList.clear();
             }
-            clickEventPublisher.onNext("cancel");
+            clickEventPublisher.onNext(ROOM_SETTING_CANCEL);
         }
 
         @Override
         public void clickUpload() {
-            clickEventPublisher.onNext("upload");
+            clickEventPublisher.onNext(ROOM_SETTING_UPLOAD);
             dataModel.setDateText(mDateString);
             mapList = dataModel.getAll(mRoomNum);
             if (!mapList.isEmpty()) {
