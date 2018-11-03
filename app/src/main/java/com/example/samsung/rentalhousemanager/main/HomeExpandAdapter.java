@@ -122,14 +122,11 @@ public class HomeExpandAdapter extends BaseExpandableListAdapter {
         return view;
     }
 
-    private int mIncrement;
-
     @Override
     public View getChildView(final int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         View view = convertView;
 
-        mIncrement = 0;
         if (view == null) {
             viewHolder = new ViewHolder();
             view = mInflater.inflate(R.layout.list_home_child, null);
@@ -147,7 +144,7 @@ public class HomeExpandAdapter extends BaseExpandableListAdapter {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(mActivity, RoomDetailActivity.class);
-                intent.putExtra("roomNum", HomeGridViewAdapter.roomChaangeList.get(position));
+                intent.putExtra("roomNum", HomeGridViewAdapter.roomChangeList.get(groupPosition).get(position));
                 mContext.startActivity(intent);
             }
         });

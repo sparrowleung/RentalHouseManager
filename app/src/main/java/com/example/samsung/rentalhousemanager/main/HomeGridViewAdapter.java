@@ -28,7 +28,8 @@ public class HomeGridViewAdapter extends BaseAdapter {
     private int mIncrement;
     private LayoutInflater mInflater;
     private List<String> mFloorList;
-    public static List<String> roomChaangeList = new ArrayList<>();
+    private List<String> changeList = new ArrayList<>();
+    public static List<List<String>> roomChangeList = new ArrayList<>();
     private List<List<Map<String, Integer>>> mGridMap;
 
     HomeGridViewAdapter(Context context) {
@@ -64,11 +65,12 @@ public class HomeGridViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         ViewHolder viewHolder;
+
         if (convertView == null) {
             viewHolder = new ViewHolder();
             view = mInflater.inflate(R.layout.view_grid_view, null);
-            viewHolder.gridImageView = (ImageView) view.findViewById(R.id.image_gridview);
             viewHolder.gridTextView = (TextView) view.findViewById(R.id.text_gridview);
+            viewHolder.gridImageView = (ImageView) view.findViewById(R.id.image_gridview);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -89,15 +91,16 @@ public class HomeGridViewAdapter extends BaseAdapter {
             }
         }
 
-        String roomChange = "";
+        String roomChange;
         if (Integer.valueOf(roomNum) < 10) {
             roomChange = new StringBuffer(mFloorList.get(groupPosition)).append("0").append(roomNum).toString();
         } else {
             roomChange = new StringBuffer(mFloorList.get(groupPosition)).append(roomNum).toString();
         }
 
+        changeList.add(position, roomChange);
         viewHolder.gridTextView.setText(roomChange);
-        roomChaangeList.add(position, roomChange);
+        roomChangeList.add(groupPosition, changeList);
         return view;
     }
 

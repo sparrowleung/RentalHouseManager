@@ -180,7 +180,6 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
                     viewHolder = new ViewHolder();
                     view = mInflater.inflate(R.layout.list_room_child_house, null);
                     viewHolder.mHouseAir = (TextView) view.findViewById(R.id.house_air);
-                    viewHolder.mHouseNum = (TextView) view.findViewById(R.id.house_num);
                     viewHolder.mHouseTenancy = (TextView) view.findViewById(R.id.house_tenancy);
                     viewHolder.mHouseDeposit = (TextView) view.findViewById(R.id.house_deposit);
                     viewHolder.mHouseMonthly = (TextView) view.findViewById(R.id.house_monthly);
@@ -196,7 +195,6 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
 
                 if (mChildList.get(groupPosition) != null && mChildList.get(groupPosition).size() > 0) {
                     viewHolder.mHouseAir.setText(mChildList.get(groupPosition).get(0).get("air"));
-                    viewHolder.mHouseNum.setText(mChildList.get(groupPosition).get(0).get("num"));
                     viewHolder.mHouseTenancy.setText(mChildList.get(groupPosition).get(0).get("tenancy"));
                     viewHolder.mHouseDeposit.setText(mChildList.get(groupPosition).get(0).get("deposit"));
                     viewHolder.mHouseMonthly.setText(mChildList.get(groupPosition).get(0).get("monthly"));
@@ -323,7 +321,6 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
         TextView mRenterLiveNum;
         TextView mRenterId;
 
-        TextView mHouseNum;
         TextView mHouseTenancy;
         TextView mHouseDeposit;
         TextView mHouseMonthly;

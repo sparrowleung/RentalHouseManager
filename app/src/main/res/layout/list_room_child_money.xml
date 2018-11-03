@@ -7,55 +7,58 @@
     <android.support.v7.widget.CardView
         android:id="@+id/room_child_card"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:elevation="2dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/room_child_line1"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/room_child_layout1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_eleUse"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/room_electric"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="度"
@@ -63,88 +66,86 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/room_child_layout2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toEndOf="@+id/room_child_layout1"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_ele"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/room_electric_money"
-                        android:layout_width="65dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:gravity="center"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元"
                         android:textSize="14sp" />
                 </LinearLayout>
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/room_child_line2"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp">
 
                 <LinearLayout
-                    android:id="@+id/room_child_layout3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_waterUse"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/room_water"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="吨"
@@ -152,90 +153,88 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/room_child_layout4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toEndOf="@+id/room_child_layout3"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_water"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/room_water_money"
-                        android:layout_width="65dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元"
                         android:textSize="14sp" />
 
                 </LinearLayout>
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/room_child_line3"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp">
 
                 <LinearLayout
-                    android:id="@+id/room_child_layout5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_airUse"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/room_air"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="方"
@@ -243,97 +242,94 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/room_child_layout6"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toEndOf="@+id/room_child_layout5"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_air"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/room_air_money"
-                        android:layout_width="65dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元"
                         android:textSize="14sp" />
-
                 </LinearLayout>
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/room_child_line5"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp">
 
                 <LinearLayout
-                    android:id="@+id/room_child_layout9"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/bill_sum"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/room_sum_money"
-                        android:layout_width="79dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元"
                         android:textSize="14sp" />
                 </LinearLayout>
 
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
