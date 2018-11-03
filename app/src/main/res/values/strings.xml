@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">租多宝</string>
+    <string name="app_name">房租满</string>
     <string name="font_sans_serif_condensed">sec-roboto-condensed</string>
     <string name="news_and_tips">信息提醒</string>
     <string name="notice">通知</string>
@@ -40,7 +40,7 @@
     <string name="date_pick">请选择需要查询的月份</string>
     <string name="bill_setting">本月费用设置</string>
     <string name="bill_sum">总房租</string>
-    <string name="room_num">房间号</string>
+    <string name="room_num">房号</string>
     <string name="go_setting_ornot">是否前往设置？</string>
     <string name="go_forward">前往</string>
     <string name="msg_without_setting">当前房间尚未设置该项信息</string>
@@ -56,4 +56,5 @@
     <string name="dialog_cancel">取消</string>
     <string name="room_setting_cancel">是否取消提交</string>
     <string name="room_setting_cancel_txt">取消提交将不会保存已输入数据</string>
+    <string name="room_detail_title">详细信息</string>
 </resources>

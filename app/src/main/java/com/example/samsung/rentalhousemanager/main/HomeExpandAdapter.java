@@ -147,25 +147,7 @@ public class HomeExpandAdapter extends BaseExpandableListAdapter {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(mActivity, RoomDetailActivity.class);
-
-                String roomNum = String.valueOf(mChildMap.get(groupPosition).get(position).get("child") + mIncrement);
-                if (roomNum.contains("4")) {
-                    switch (mFourRoom) {
-                        case 3:
-                            break;
-                        case 4:
-                            mIncrement += 1;
-                            roomNum = String.valueOf(mChildMap.get(groupPosition).get(position).get("child") + mIncrement);
-                            break;
-                        case 5:
-                            roomNum = roomNum.replace("4", "3A");
-                            break;
-                    }
-                }
-
-                String roomNum1 = position > 10 ? new StringBuffer(mFloorList.get(groupPosition)).append(roomNum).toString()
-                        : new StringBuffer(mFloorList.get(groupPosition)).append("0").append(roomNum).toString();
-                intent.putExtra("roomNum", roomNum1);
+                intent.putExtra("roomNum", HomeGridViewAdapter.roomChaangeList.get(position));
                 mContext.startActivity(intent);
             }
         });

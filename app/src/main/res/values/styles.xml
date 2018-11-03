@@ -40,7 +40,7 @@
     </style>
 
     <style name="AppTheme.ActionBarTitle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/dialog_item_title</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:fontFamily">sec-roboto-condensed</item>

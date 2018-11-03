@@ -43,14 +43,15 @@ public class BaseActivity extends AppCompatActivity {
         if (actionBar != null) {
             ActionBar.LayoutParams lp = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
             ViewGroup mCustomActionBarView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.view_action_bar, null);
-            View mDrawerIcon = (ImageView) mCustomActionBarView.findViewById(R.id.drawerIcon);
+            View mDrawerIcon = mCustomActionBarView.findViewById(R.id.drawer_layout);
+            ImageView imageView = mDrawerIcon.findViewById(R.id.drawerIcon);
             mDrawerIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     finish();
                 }
             });
-            mDrawerIcon.setBackgroundResource(R.drawable.leftcircle);
+            imageView.setBackgroundResource(R.drawable.leftcircle);
             actionBar.setCustomView(mCustomActionBarView, lp);
         }
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

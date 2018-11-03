@@ -52,8 +52,8 @@ public class RoomDetailFragment extends BaseFragment implements IRoomView, IResp
     private AlertDialog mDialogDatePick;
 
     private Button mSettingButton;
-    private Button mNotifyInfoButton;
-    private Button mNotifyMoneyButton;
+    private View mNotifyInfoButton;
+    private View mNotifyMoneyButton;
     private ImageButton mDatePickerButton;
 
     private ProgressBar mProgressBar;
@@ -94,7 +94,7 @@ public class RoomDetailFragment extends BaseFragment implements IRoomView, IResp
     public void onViewCreated(View view, Bundle saveInstanceState) {
         super.onViewCreated(view, saveInstanceState);
         mRoomNumberText = getArguments().getString("roomNum");
-        mTitle = "RentalHouseDetail";
+        mTitle = getString(R.string.room_detail_title);
         updateActionBar();
         initView();
 
@@ -113,8 +113,8 @@ public class RoomDetailFragment extends BaseFragment implements IRoomView, IResp
         mContainer = (RelativeLayout) mRootView.findViewById(R.id.room_view);
         mProgressBar = (ProgressBar) mRootView.findViewById(R.id.room_progressbar);
 
-        mNotifyInfoButton = (Button) mRootView.findViewById(R.id.room_notify_info);
-        mNotifyMoneyButton = (Button) mRootView.findViewById(R.id.room_notify_money);
+        mNotifyInfoButton = mRootView.findViewById(R.id.room_notify_info);
+        mNotifyMoneyButton = mRootView.findViewById(R.id.room_notify_money);
 
         mDateText = (TextView) mRootView.findViewById(R.id.room_time);
         mDatePickerButton = (ImageButton) mRootView.findViewById(R.id.room_timePick);

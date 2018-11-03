@@ -246,7 +246,8 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     private ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        }
 
         @Override
         public void onPageSelected(int position) {
@@ -254,7 +255,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         }
 
         @Override
-        public void onPageScrollStateChanged(int state) {}
+        public void onPageScrollStateChanged(int state) {
+        }
     };
 
     private void setMainTextFontStyle(TabLayout tabLayout, int position) {
@@ -327,8 +329,9 @@ public class MainActivity extends BaseActivity implements IMainView {
         if (actionBar != null) {
             ActionBar.LayoutParams lp = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
             ViewGroup customActionbarView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.view_action_bar, null);
-            mDrawerIcon = customActionbarView.findViewById(R.id.drawerIcon);
-            mDrawerIcon.setBackgroundResource(R.drawable.navicon);
+            mDrawerIcon = customActionbarView.findViewById(R.id.drawer_layout);
+            ImageView imageView = mDrawerIcon.findViewById(R.id.drawerIcon);
+            imageView.setBackgroundResource(R.drawable.navicon);
             mDrawerIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

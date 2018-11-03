@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.samsung.rentalhousemanager.R;
@@ -27,6 +28,7 @@ public class HomeGridViewAdapter extends BaseAdapter {
     private int mIncrement;
     private LayoutInflater mInflater;
     private List<String> mFloorList;
+    public static List<String> roomChaangeList = new ArrayList<>();
     private List<List<Map<String, Integer>>> mGridMap;
 
     HomeGridViewAdapter(Context context) {
@@ -87,11 +89,15 @@ public class HomeGridViewAdapter extends BaseAdapter {
             }
         }
 
-        if (mGridMap.get(groupPosition).get(position).get("child") < 10) {
-            viewHolder.gridTextView.setText(new StringBuffer(mFloorList.get(groupPosition)).append("0").append(roomNum));
+        String roomChange = "";
+        if (Integer.valueOf(roomNum) < 10) {
+            roomChange = new StringBuffer(mFloorList.get(groupPosition)).append("0").append(roomNum).toString();
         } else {
-            viewHolder.gridTextView.setText(new StringBuffer(mFloorList.get(groupPosition)).append(roomNum));
+            roomChange = new StringBuffer(mFloorList.get(groupPosition)).append(roomNum).toString();
         }
+
+        viewHolder.gridTextView.setText(roomChange);
+        roomChaangeList.add(position, roomChange);
         return view;
     }
 

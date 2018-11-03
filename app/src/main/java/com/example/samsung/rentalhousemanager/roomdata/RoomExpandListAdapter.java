@@ -112,7 +112,7 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        viewHolder.mGroupImage.setImageResource(R.drawable.house);
+        viewHolder.mGroupImage.setImageResource(R.drawable.information);
         if (isExpanded) {
             viewHolder.mGroupExpand.setImageResource(R.drawable.up);
         } else {
@@ -273,8 +273,8 @@ public class RoomExpandListAdapter extends BaseExpandableListAdapter {
                                         mIResponse.onFail(INPUT_ERROR);
                                     } else {
                                         RentalMoneyObject object = new RentalMoneyObject();
-                                        object.setRoomNum( mChildList.get(1).get(0).get("num"));
-                                        object.setElectricUse( elect);
+                                        object.setRoomNum(mChildList.get(1).get(0).get("num"));
+                                        object.setElectricUse(elect);
                                         object.setWaterUse(water);
                                         object.setAirUse(air);
                                         object.setUploadAt(new BmobDate(mDate));
