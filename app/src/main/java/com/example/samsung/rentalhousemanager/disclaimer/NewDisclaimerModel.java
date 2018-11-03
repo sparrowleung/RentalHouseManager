@@ -1,8 +1,5 @@
 package com.example.samsung.rentalhousemanager.disclaimer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by yuyang.liang on 2018/8/24.
  */

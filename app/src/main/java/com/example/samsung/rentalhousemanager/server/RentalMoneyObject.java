@@ -1,7 +1,5 @@
 package com.example.samsung.rentalhousemanager.server;
 
-import java.util.Date;
-
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobDate;
 

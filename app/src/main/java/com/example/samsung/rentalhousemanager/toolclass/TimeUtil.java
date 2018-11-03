@@ -3,8 +3,6 @@ package com.example.samsung.rentalhousemanager.toolclass;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import cn.bmob.v3.datatype.BmobDate;
-
 /**
  * Created by yuyang.liang on 2018/10/15.
  */

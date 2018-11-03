@@ -20,9 +20,7 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -32,7 +30,6 @@ import io.reactivex.schedulers.Schedulers;
 public class MsgSendData {
     private final static String TAG = MsgSendData.class.getSimpleName();
 
-    private int finishFlag = 0;
     private IResponse mResponse;
 
     public static final int MSG_REQUEST_FAIL = 1;
@@ -42,10 +39,6 @@ public class MsgSendData {
     private Map<String, Object> equalMap = new HashMap<>();
     private Map<String, Object> greatMap = new HashMap<>();
 
-    private Observable<Boolean> roomMsgObservable;
-    private Observable<Boolean> rentalMsgObservable;
-    private Observable<Boolean> renterMsgObservable;
-
     public MsgSendData(IResponse response, Map<String, Object> map, Map<String, Object> map1) {
         lessMap = map;
         greatMap = map1;
@@ -54,6 +47,9 @@ public class MsgSendData {
     }
 
     public List<List<Map<String, String>>> requestAllMsg() {
+        Observable<Boolean> roomMsgObservable;
+        Observable<Boolean> rentalMsgObservable;
+        Observable<Boolean> renterMsgObservable;
         final List<List<Map<String, String>>> allMsgList = new ArrayList<>();
 
         renterMsgObservable = Observable.create(new ObservableOnSubscribe<Boolean>() {

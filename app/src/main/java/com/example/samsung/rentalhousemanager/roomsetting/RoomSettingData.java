@@ -1,10 +1,7 @@
 package com.example.samsung.rentalhousemanager.roomsetting;
 
 import android.util.Log;
-import android.util.Pair;
-import android.widget.EditText;
 
-import com.example.samsung.rentalhousemanager.R;
 import com.example.samsung.rentalhousemanager.roomdata.IResponse;
 import com.example.samsung.rentalhousemanager.server.RentalMoneyObject;
 import com.example.samsung.rentalhousemanager.server.RenterMessageObject;

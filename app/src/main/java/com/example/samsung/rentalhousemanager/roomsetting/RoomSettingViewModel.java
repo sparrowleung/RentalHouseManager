@@ -1,7 +1,6 @@
 package com.example.samsung.rentalhousemanager.roomsetting;
 
 import android.databinding.BaseObservable;
-import android.os.Bundle;
 import android.widget.EditText;
 
 import com.example.samsung.rentalhousemanager.roomdata.IResponse;

@@ -1,6 +1,5 @@
 package com.example.samsung.rentalhousemanager.roomsetting;
 
-import android.util.Log;
 import android.widget.EditText;
 
 import com.example.samsung.rentalhousemanager.R;
@@ -11,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 
 /**

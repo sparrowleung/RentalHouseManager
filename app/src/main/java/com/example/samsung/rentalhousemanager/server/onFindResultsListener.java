@@ -1,7 +1,5 @@
 package com.example.samsung.rentalhousemanager.server;
 
-import android.util.Log;
-
 import java.util.List;
 
 import cn.bmob.v3.exception.BmobException;

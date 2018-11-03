@@ -1,11 +1,8 @@
 package com.example.samsung.rentalhousemanager.toolclass;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-
-import com.example.samsung.rentalhousemanager.disclaimer.NewDisclaimerViewModel;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;

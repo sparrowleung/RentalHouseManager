@@ -40,7 +40,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 
 public class MainActivity extends BaseActivity implements IMainView {
