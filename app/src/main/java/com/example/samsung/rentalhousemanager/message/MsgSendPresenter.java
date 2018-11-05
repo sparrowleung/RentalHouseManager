@@ -132,7 +132,8 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
     @Override
     public List<List<Map<String, String>>> getRenterAllMsg() {
         mMsgSendData = new MsgSendData(mResponse, lessMap, greatMap);
-        return mMsgSendData.requestAllMsg();
+        mRentalAllMsg = mMsgSendData.requestAllMsg();
+        return mRentalAllMsg;
     }
 
     @Override
