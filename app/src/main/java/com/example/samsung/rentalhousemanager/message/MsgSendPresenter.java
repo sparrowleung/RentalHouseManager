@@ -80,6 +80,7 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         final String SMS_DELIVERED_ACTION = "SMS_DELIVERED";
 
         index = 0;
+        final int listSize = mRentalAllMsg.get(1).size();
         sendStateReceiver = new MsgSendStateBroadcastReceiver();
         mContext.registerReceiver(sendStateReceiver, new IntentFilter(SMS_SEND_ACTION));
 
@@ -89,16 +90,17 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
         mSendDisposable.add(Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < listSize; i++) {
                     PendingIntent sentIntent = PendingIntent.getBroadcast(mContext, i, new Intent(SMS_SEND_ACTION), 0);
                     PendingIntent receiveIntent = PendingIntent.getBroadcast(mContext, i + 1, new Intent(SMS_DELIVERED_ACTION), 0);
 
                     SmsManager smsManager = SmsManager.getDefault();
-                    String str = String.format("尊敬的%s房客:\n上个月您的用电量为%s度、用水量为%s吨，共计房租%s元。收到通知后，可通过微信转账/现金支付。\n祝您生活愉快。",
-                            mRentalAllMsg.get(0).get(0).get("roomNum"),
-                            mRentalAllMsg.get(1).get(0).get("electricUse"),
-                            mRentalAllMsg.get(1).get(0).get("waterUse"),
-                            sumDeposit.get(0));
+                    String str = String.format("尊敬的%s房客:\n上个月您的用电量为%s度、用水量为%s吨、用气量为%s方，共计房租%s元。收到通知后，可通过微信转账或现金支付。\n祝您生活愉快。",
+                            mRentalAllMsg.get(0).get(i).get("roomNum"),
+                            mRentalAllMsg.get(1).get(i).get("electricUse"),
+                            mRentalAllMsg.get(1).get(i).get("waterUse"),
+                            mRentalAllMsg.get(1).get(i).get("airUse"),
+                            sumDeposit.get(i));
 
                     ArrayList<String> msgMulti = smsManager.divideMessage(str);
                     ArrayList<PendingIntent> sentIntents = new ArrayList<>();
@@ -108,7 +110,7 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
                         sentIntents.add(sentIntent);
                         receiveIntents.add(receiveIntent);
                     }
-                    smsManager.sendMultipartTextMessage("18520971032", null, msgMulti, sentIntents, receiveIntents);
+                    smsManager.sendMultipartTextMessage(mRentalAllMsg.get(0).get(i).get("phoneNum"), null, msgMulti, sentIntents, receiveIntents);
                 }
                 e.onNext(true);
             }
@@ -191,6 +193,7 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
     class MsgSendStateBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
+            int listSize = mRentalAllMsg.get(1).size();
             switch (getResultCode()) {
                 case Activity.RESULT_OK:
                     index++;
@@ -203,7 +206,7 @@ class MsgSendPresenterImpl extends MsgSendPresenter {
                     break;
             }
 
-            if (index / 2 == 2) {
+            if (index / 2 == listSize) {
                 mSendDisposable.clear();
                 if (failList.isEmpty()) {
                     RHToast.makeText(mContext, mContext.getString(R.string.msg_finish), Toast.LENGTH_SHORT).show();

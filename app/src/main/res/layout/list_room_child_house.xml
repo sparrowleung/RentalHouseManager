@@ -38,7 +38,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_monthly"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/house_monthly"
@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="@string/customer_deposit"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
                     android:layout_marginStart="2dp"
                     android:gravity="center_vertical"
                     android:text=":"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/house_deposit"
@@ -87,7 +87,7 @@
                     android:layout_marginStart="2dp"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
             </LinearLayout>
             </LinearLayout>
 
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_tenancy"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/house_tenancy"
@@ -125,7 +125,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -134,7 +134,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="年"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -157,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_water"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -165,7 +165,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/house_water"
@@ -174,7 +174,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -183,7 +183,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元/吨"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -199,7 +199,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_ele"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -207,7 +207,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/house_electric"
@@ -216,7 +216,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -225,7 +225,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元/度"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -248,7 +248,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_air"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -256,7 +256,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/house_air"
@@ -265,7 +265,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -274,7 +274,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元/方"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -295,7 +295,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_otherBill"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -303,7 +303,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/house_other"
@@ -312,7 +312,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -321,7 +321,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元/月"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -337,7 +337,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="@string/customer_manageBill"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -345,7 +345,7 @@
                     android:layout_marginStart="2dp"
                     android:gravity="center_vertical"
                     android:text=":"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/house_manage"
@@ -354,7 +354,7 @@
                     android:layout_marginStart="2dp"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -363,7 +363,7 @@
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:text="元/月"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
             </LinearLayout>
             </LinearLayout>
 
@@ -384,7 +384,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_liveDay"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -392,7 +392,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/house_date"
@@ -400,7 +400,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
             </LinearLayout>

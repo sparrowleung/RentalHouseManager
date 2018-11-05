@@ -36,7 +36,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_eleUse"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/room_electric"
@@ -53,7 +53,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="度"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -77,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_ele"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/room_electric_money"
@@ -93,7 +93,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
                         android:gravity="center"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_waterUse"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/room_water"
@@ -140,7 +140,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -149,7 +149,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="吨"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -164,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_water"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -172,7 +172,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/room_water_money"
@@ -181,7 +181,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -190,7 +190,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -212,7 +212,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_airUse"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -220,7 +220,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/room_air"
@@ -229,7 +229,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -238,7 +238,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="方"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -253,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/customer_air"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -261,7 +261,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/room_air_money"
@@ -270,7 +270,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -279,7 +279,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -300,7 +300,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/bill_sum"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -308,7 +308,7 @@
                         android:layout_marginStart="2dp"
                         android:gravity="center_vertical"
                         android:text=":"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/room_sum_money"
@@ -317,7 +317,7 @@
                         android:layout_marginStart="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -326,7 +326,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="元"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
             </LinearLayout>
