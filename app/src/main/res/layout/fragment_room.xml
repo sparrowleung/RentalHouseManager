@@ -106,13 +106,14 @@
                     <TextView
                         android:text=":"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"/>
 
                     <TextView
                         android:id="@+id/room_time"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="15dp"
                         android:gravity="center"
                         android:textColor="@color/intro_description"
                         android:textSize="12sp" />
@@ -133,12 +134,15 @@
             android:id="@+id/room_progressbar"
             android:layout_width="58dp"
             android:layout_height="58dp"
-            android:layout_centerInParent="true" />
+            android:indeterminateTint="@color/accent"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
 
         <ExpandableListView
             android:id="@+id/room_message_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"></ExpandableListView>
+            android:layout_marginTop="5dp">
+        </ExpandableListView>
     </RelativeLayout>
 </LinearLayout>
