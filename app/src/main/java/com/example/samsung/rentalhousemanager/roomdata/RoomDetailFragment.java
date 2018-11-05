@@ -228,6 +228,8 @@ public class RoomDetailFragment extends BaseFragment implements IRoomView, IResp
 
         } else {
             mExpandList.setVisibility(View.GONE);
+            mNotifyInfoButton.setVisibility(View.GONE);
+            mNotifyMoneyButton.setVisibility(View.GONE);
             mEmptyView = LayoutInflater.from(getContext()).inflate(R.layout.view_empty_message, null);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             mContainer.addView(mEmptyView, layoutParams);

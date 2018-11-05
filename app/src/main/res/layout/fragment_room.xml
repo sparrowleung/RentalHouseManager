@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:textSize="45dp" />
 
             <LinearLayout
@@ -33,6 +33,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/room_num"
                 android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -42,7 +45,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -66,7 +70,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -88,23 +93,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/room_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginEnd="3dp"
-                        android:gravity="center"
-                        android:textColor="@color/intro_description"
-                        android:textSize="12sp" />
+                    android:orientation="horizontal"
+                    android:layout_gravity="bottom">
 
                     <ImageButton
                         android:id="@+id/room_timePick"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:layout_marginRight="17dp"
+                        android:layout_marginEnd="5dp"
                         android:background="?android:attr/selectableItemBackground" />
+
+                    <TextView
+                        android:text=":"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/room_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center"
+                        android:textColor="@color/intro_description"
+                        android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
 
