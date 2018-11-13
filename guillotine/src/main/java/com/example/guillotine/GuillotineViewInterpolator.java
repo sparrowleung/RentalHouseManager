@@ -4,8 +4,8 @@ import android.animation.TimeInterpolator;
 
 public class GuillotineViewInterpolator implements TimeInterpolator {
     private static final float ROTATION_TIME = 0.4f;
-    private static final float FIRST_BOUNCE_TIME = 0.3f;
-    private static final float SECOND_BOUNCE_TIME = 0.3f;
+    public static final float FIRST_BOUNCE_TIME = 0.3f;
+    public static final float SECOND_BOUNCE_TIME = 0.3f;
 
     @Override
     public float getInterpolation(float input) {
