@@ -119,7 +119,8 @@ public class MainActivity extends BaseActivity implements IMainView, GuillotineL
         setupActionBar();
         setTabPadding(mTabLayout);
 
-        mDrawerLayout.addView(guillotineView, new DrawerLayout.LayoutParams(DrawerLayout.LayoutParams.WRAP_CONTENT, DrawerLayout.LayoutParams.WRAP_CONTENT));
+        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 298, this.getResources().getDisplayMetrics());
+        mDrawerLayout.addView(guillotineView, new DrawerLayout.LayoutParams(width, DrawerLayout.LayoutParams.WRAP_CONTENT));
 
         ImageView imageView = guillotineView.findViewById(R.id.drawerIcon);
         imageView.setImageResource(R.drawable.navi_icon_90);
