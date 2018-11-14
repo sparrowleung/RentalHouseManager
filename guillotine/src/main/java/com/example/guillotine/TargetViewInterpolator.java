@@ -4,17 +4,17 @@ import android.animation.TimeInterpolator;
 
 public class TargetViewInterpolator implements TimeInterpolator {
 
-    private static final float FIRST_BOUNCE_TIME = 0.35f;
-    private static final float SECOND_BOUNCE_TIME = 0.65f;
+    private static final float FIRST_BOUNCE_PART = 0.375f;
+    private static final float SECOND_BOUNCE_PART = 0.625f;
 
     @Override
-    public float getInterpolation(float input) {
-        if (input < FIRST_BOUNCE_TIME) {
-            return input * input * (-28.4f) + 10f * input;
-        } else if (input < SECOND_BOUNCE_TIME) {
-            return 21.3f * input * input - 21.3f * input + 5.0f;
+    public float getInterpolation(float t) {
+        if (t < FIRST_BOUNCE_PART) {
+            return (-28.4444f) * t * t + 10.66667f * t;
+        } else if (t < SECOND_BOUNCE_PART) {
+            return (21.33312f) * t * t - 21.33312f * t + 4.999950f;
         } else {
-            return (-9f) * input * input + 15.4f * input - 6.0f;
+            return (-9.481481f) * t * t + 15.40741f * t - 5.925926f;
         }
     }
 }

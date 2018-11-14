@@ -19,16 +19,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.guillotine.GuillotineAnimation;
+import com.example.guillotine.GuillotineListener;
+import com.example.guillotine.GuillotineViewInterpolator;
 import com.example.samsung.rentalhousemanager.R;
 import com.example.samsung.rentalhousemanager.baseclass.BaseActivity;
 import com.example.samsung.rentalhousemanager.databinding.ActivityMainBinding;
@@ -42,7 +48,7 @@ import java.util.Map;
 
 import cn.bmob.v3.BmobUser;
 
-public class MainActivity extends BaseActivity implements IMainView {
+public class MainActivity extends BaseActivity implements IMainView, GuillotineListener {
     private final static String TAG = MainActivity.class.getSimpleName();
 
     public static final String KEY_QUERY_TAB = "tab";
@@ -52,6 +58,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     private Toolbar mToolbar;
     private View mProfileHeader;
+    private View guillotineView;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private DrawerLayout mDrawerLayout;
@@ -99,7 +106,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         setViewId();
 
         mBarLayout.addOnOffsetChangedListener(onOffsetChangedListener);
-        setDrawerProfile();
+        setDrawerProfile(mDrawerListView);
         mToolbar.setContentInsetsAbsolute(0, 0);
         setSupportActionBar(mToolbar);
 
@@ -108,9 +115,29 @@ public class MainActivity extends BaseActivity implements IMainView {
 
         setViewPager();
         setupTabLayout();
-        setupDrawer();
+        setupDrawer(mDrawerListView);
         setupActionBar();
         setTabPadding(mTabLayout);
+
+        mDrawerLayout.addView(guillotineView, new DrawerLayout.LayoutParams(DrawerLayout.LayoutParams.WRAP_CONTENT, DrawerLayout.LayoutParams.WRAP_CONTENT));
+
+        ImageView imageView = guillotineView.findViewById(R.id.drawerIcon);
+        imageView.setImageResource(R.drawable.navi_icon_90);
+        TextView textView = guillotineView.findViewById(R.id.jpTitleTextView);
+        textView.setText(getString(R.string.app_name));
+        View closeView = guillotineView.findViewById(R.id.drawer_layout);
+
+        ExpandableListView guillotine_list = guillotineView.findViewById(R.id.drawer_list);
+        setDrawerProfile(guillotine_list);
+        setupDrawer(guillotine_list);
+        guillotine_list.setAdapter(mDrawerAdapter);
+
+        new GuillotineAnimation.AnimationBuilder(mDrawerIcon, closeView, guillotineView)
+                .setStartDelay(250)
+                .setActionBarView(mToolbar)
+                .setIsCloseOnBegin(true)
+                .setListener(this)
+                .build();
     }
 
     @Override
@@ -134,16 +161,16 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setupDrawer() {
+    public void setupDrawer(ExpandableListView expandableListView) {
         setProfileHeader();
 
         List<Map<String, Object>> drawerMap = mMainPresenter.getDrawer();
         mDrawerAdapter.setUpDrawerMap(drawerMap);
         mDrawerAdapter.notifyDataSetChanged();
-        mDrawerListView.invalidate();
-        mDrawerListView.requestLayout();
+        expandableListView.invalidate();
+        expandableListView.requestLayout();
 
-        mDrawerListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 Map<String, Object> groupMap = (Map<String, Object>) mDrawerAdapter.getGroup(groupPosition);
@@ -166,7 +193,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             }
         });
 
-        mDrawerListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Map<String, Object> childMap = (Map<String, Object>) mDrawerAdapter.getChild(groupPosition, childPosition);
@@ -209,24 +236,38 @@ public class MainActivity extends BaseActivity implements IMainView {
         mDrawerListView = mMainBinding.drawerList;
         mViewPager = mMainBinding.viewPager;
         mNaviView = mMainBinding.naviView;
+        guillotineView = LayoutInflater.from(this).inflate(R.layout.view_guillotine, mDrawerLayout, false);
     }
 
-    private void setDrawerProfile() {
-        mDrawerListView.setGroupIndicator(null);
-        mDrawerListView.setChildIndicator(null);
-        mDrawerListView.setDividerHeight(0);
+    private void setDrawerProfile(ExpandableListView listView) {
+        listView.setGroupIndicator(null);
+        listView.setChildIndicator(null);
+        listView.setDividerHeight(0);
 
         mProfileHeader = getLayoutInflater().inflate(R.layout.view_navigation_header, null);
         setProfileHeader();
-        mDrawerListView.addHeaderView(mProfileHeader, null, false);
+        listView.addHeaderView(mProfileHeader, null, false);
     }
 
     private void setProfileHeader() {
-        ImageView imageView = (ImageView) mNaviView.findViewById(R.id.account_image);
+        ImageView imageView = (ImageView) mNaviView.findViewById(R.id.drawerIcon);
+        imageView.setImageResource(R.drawable.navi_icon_90);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeDrawer();
+            }
+        });
         TextView textView = (TextView) mNaviView.findViewById(R.id.username);
         if (BmobUser.getCurrentUser() != null && textView != null) {
             textView.setText(BmobUser.getCurrentUser().getUsername());
         }
+
+        TextView textView1 = (TextView) guillotineView.findViewById(R.id.username);
+        if (BmobUser.getCurrentUser() != null && textView1 != null) {
+            textView1.setText(BmobUser.getCurrentUser().getUsername());
+        }
+
     }
 
     private void setViewPager() {
@@ -314,6 +355,11 @@ public class MainActivity extends BaseActivity implements IMainView {
             return;
         }
 
+        if (guillotineView.getVisibility() == View.VISIBLE) {
+            guillotineView.setVisibility(View.GONE);
+            return;
+        }
+
         if (mPagerAdapter.getCurrentTabType() != MainType.HOME) {
             goTab(MainType.HOME);
             return;
@@ -331,17 +377,8 @@ public class MainActivity extends BaseActivity implements IMainView {
             ViewGroup customActionbarView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.view_action_bar, null);
             mDrawerIcon = customActionbarView.findViewById(R.id.drawer_layout);
             ImageView imageView = mDrawerIcon.findViewById(R.id.drawerIcon);
-            imageView.setBackgroundResource(R.drawable.navicon);
-            mDrawerIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-                        mDrawerLayout.closeDrawers();
-                    } else {
-                        openDrawer();
-                    }
-                }
-            });
+            imageView.setBackgroundResource(R.drawable.navi_icon);
+
             actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
             actionBar.setCustomView(customActionbarView, lp);
             actionBar.setDisplayShowCustomEnabled(true);
@@ -382,6 +419,18 @@ public class MainActivity extends BaseActivity implements IMainView {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onGuillotineViewOpen() {
+        if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
+            mDrawerLayout.closeDrawer(Gravity.START);
+        }
+    }
+
+    @Override
+    public void onGuillotineViewClose() {
+
     }
 
     static class TabPagerAdapter extends FragmentStatePagerAdapter {

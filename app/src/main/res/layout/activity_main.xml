@@ -34,7 +34,7 @@
                 <com.example.samsung.rentalhousemanager.toolclass.V26Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_gravity="top"
                     android:background="#FFFF"
                     android:contentInsetStart="0dp"
@@ -85,6 +85,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <include android:id="@+id/navi_close"
+                    layout="@layout/view_action_bar"/>
 
                 <ExpandableListView
                     android:id="@+id/drawer_list"

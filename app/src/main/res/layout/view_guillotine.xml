@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="298dp"
+    android:layout_height="wrap_content"
+    android:background="#FFFF"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/guillotine_bar"
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        layout="@layout/view_action_bar" />
+
+    <ExpandableListView
+        android:id="@+id/drawer_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

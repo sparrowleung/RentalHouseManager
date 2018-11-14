@@ -3,18 +3,24 @@ package com.example.guillotine;
 import android.animation.TimeInterpolator;
 
 public class GuillotineViewInterpolator implements TimeInterpolator {
-    private static final float ROTATION_TIME = 0.4f;
-    public static final float FIRST_BOUNCE_TIME = 0.3f;
-    public static final float SECOND_BOUNCE_TIME = 0.3f;
+    public static final float ROTATION_TIME = 0.46667f;
+    public static final float FIRST_BOUNCE_TIME = 0.26666f;
+    public static final float SECOND_BOUNCE_TIME = 0.26667f;
+    public float getInterpolation(float t) {
+        if (t < ROTATION_TIME) return rotation(t);
+        else if (t < ROTATION_TIME + FIRST_BOUNCE_TIME) return firstBounce(t);
+        else return secondBounce(t);
+    }
 
-    @Override
-    public float getInterpolation(float input) {
-        if (input < ROTATION_TIME) {
-            return input * input * 4.5f;
-        } else if (input < FIRST_BOUNCE_TIME + SECOND_BOUNCE_TIME) {
-            return input * input * 2.5f - 3f * input + 1.8f;
-        } else {
-            return 0.6f * input * input - 1.2f * input + 1.4f;
-        }
+    private float rotation(float t) {
+        return 4.592f * t * t;
+    }
+
+    private float firstBounce(float t) {
+        return 2.5f * t * t - 3f * t + 1.85556f;
+    }
+
+    private float secondBounce(float t) {
+        return 0.625f * t * t - 1.083f * t + 1.458f;
     }
 }

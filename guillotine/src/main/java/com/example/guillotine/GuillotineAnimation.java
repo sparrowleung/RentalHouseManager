@@ -3,11 +3,12 @@ package com.example.guillotine;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
 public class GuillotineAnimation {
-    private static final long DURATION_TIME = 250;
+    private static final long DURATION_TIME = 625;
     private static final float OPEN_GUILLOTINE_VIEW = -90f;
     private static final float CLOSE_GUILLOTINE_VIEW = 0f;
     private static final float ACTION_BAR_PART = 3f;
@@ -58,6 +59,7 @@ public class GuillotineAnimation {
     }
 
     private void closeGuillotineView() {
+        Log.e("132", "start close");
         if (!isClosing) {
             mCloseAnimator.start();
         }
@@ -141,13 +143,14 @@ public class GuillotineAnimation {
             @Override
             public void onAnimationStart(Animator animation) {
                 isClosing = true;
-                mGuillotineView.setVisibility(View.GONE);
+                mGuillotineView.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
                 isClosing = false;
-                actionBarAnimator();
+                mGuillotineView.setVisibility(View.GONE);
+                //actionBarAnimator();
                 if (mGuillotineListener != null) {
                     mGuillotineListener.onGuillotineViewClose();
                 }
@@ -164,7 +167,7 @@ public class GuillotineAnimation {
             }
         });
 
-        return mCloseAnimator;
+        return closeAnimator;
     }
 
     public void actionBarAnimator() {

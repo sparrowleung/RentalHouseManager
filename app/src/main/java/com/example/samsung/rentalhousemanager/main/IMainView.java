@@ -1,5 +1,7 @@
 package com.example.samsung.rentalhousemanager.main;
 
+import android.widget.ExpandableListView;
+
 /**
  * Created by yuyang.liang on 2018/7/11.
  */
@@ -9,7 +11,7 @@ public interface IMainView {
 
     void setupTabLayout();
 
-    void setupDrawer();
+    void setupDrawer(ExpandableListView listView);
 
     void openDrawer();
 
